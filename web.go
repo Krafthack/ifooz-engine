@@ -14,9 +14,17 @@ var (
 )
 
 func main() {
+
+    redisIp := os.Getenv("REDIS_IP")
+    redisPort := os.Getenv("REDIS_PORT")
+    redisUrl := redisIp + ":" + redisPort
+    if redisUrl == ":" {
+        redisUrl = "localhost:6379"
+    }
+
     service, mux := servicebase.NewServer()
 
-    eventrecv.Init(mux)
+    eventrecv.Init(mux, redisUrl)
 
     port := os.Getenv(port)
     if port == "" {

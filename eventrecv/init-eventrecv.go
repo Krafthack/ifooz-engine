@@ -6,8 +6,8 @@ import (
     "github.com/krafthack/ifooz-engine/rest"
 )
 
-func Init(mux *http.ServeMux) {
-    newmatchhandler := setupNewMatchHandler()
+func Init(mux *http.ServeMux, redis string) {
+    newmatchhandler := setupNewMatchHandler(redis)
     mux.HandleFunc("/newmatch", rest.PostOnly(newmatchhandler))
 }
 
