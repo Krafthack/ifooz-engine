@@ -2,9 +2,11 @@ package engine
 
 import (
     "testing"
-    "github.com/krafthack/ifooz-engine/events"
-    "code.google.com/p/go-uuid/uuid"
     "time"
+
+    "code.google.com/p/go-uuid/uuid"
+
+    "github.com/krafthack/ifooz-engine/events"
 )
 
 func TestNewMatchExpectTableUpdate(t *testing.T) {

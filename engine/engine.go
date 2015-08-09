@@ -47,3 +47,14 @@ func (e *Engine) NewMatchEvent(tablename string, newmatch *events.NewMatchEvent)
 
     return table.NewMatch(matchstatus)
 }
+
+func (e *Engine) GoalEvent(tablename string, goal events.Goal) error {
+    match := e.tables[tablename].GetCurrentMatchStatus()
+    matchstatus, err := MapGoalToMatchStatus(match, goal)
+
+    if err != nil {
+        return err
+    }
+
+    return e.tables[tablename].UpdateMatch(matchstatus)
+}

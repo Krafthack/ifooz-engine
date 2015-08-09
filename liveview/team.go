@@ -6,14 +6,16 @@ import (
 
 type Team struct {
     Players []*players.Player
-    Goals []*Goal
+    Goals []Goal
+    Score int
 }
 
 func CreateTeam(defFirst *players.Player, offFirst *players.Player) *Team {
 
     players := []*players.Player{ defFirst, offFirst }
-    goals := []*Goal{}
-    team := &Team{ players, goals }
+    goals := []Goal{}
+    score := 0
+    team := &Team{ players, goals, score }
 
     return team
 }
